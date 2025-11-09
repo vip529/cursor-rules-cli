@@ -1,0 +1,83 @@
+---
+description: Universal coding guidelines applicable to all project files
+alwaysApply: true
+---
+
+# Universal Guidelines
+
+## Code Quality Standards
+- **Confidence Threshold**: Add code only when 95% confident in its correctness and alignment with project requirements
+- **Code Philosophy**: Write enterprise-grade, simple, maintainable, readable, modular, and scalable code
+- **DRY Principle**: Don't Repeat Yourself - extract common logic into reusable utilities or components
+- **Single Responsibility**: Each function, component, or module should have a single, well-defined purpose
+- **Comments**: Avoid adding comments unless they are essential for understanding complex business logic, algorithms, or non-obvious decisions
+
+## Error Handling
+- Always handle errors explicitly - never silently fail
+- Use proper error types and meaningful error messages
+- Log errors appropriately for debugging without exposing sensitive information
+- Fail fast - detect and report errors early
+
+## Performance
+- Profile before optimizing - avoid premature optimization
+- Choose appropriate data structures and algorithms
+- Use caching for expensive operations
+- Minimize dependencies for faster builds and smaller bundles
+
+## Security
+- Never commit API keys, secrets, or sensitive data
+- Validate all user inputs and external data
+- Use environment variables for configuration
+- Follow principle of least privilege
+- Keep dependencies updated and minimal
+
+## Testing
+- Write tests for critical paths and business logic
+- Test user-facing behavior, not implementation details
+- Keep unit tests fast and isolated
+- Aim for meaningful coverage, not 100%
+
+## Version Control
+- Make small, focused, atomic commits
+- Write clear, descriptive commit messages
+- Follow project branching strategy
+- Review code before merging
+
+### Commit Messages
+Use Conventional Commits format for clear, structured commit history:
+
+**Format**: `<type>(<scope>): <description>`
+
+**Types**:
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, no logic change)
+- `refactor`: Code refactoring (no feature or bug fix)
+- `perf`: Performance improvements
+- `test`: Adding or updating tests
+- `chore`: Maintenance tasks (deps, config, build)
+- `ci`: CI/CD changes
+
+**Examples**:
+- `feat(auth): add OAuth2 login support`
+- `fix(api): handle null response in user endpoint`
+- `docs(readme): update installation instructions`
+- `refactor(utils): simplify date formatting logic`
+- `chore(deps): update dependencies to latest versions`
+
+**Breaking Changes**: Add `!` after type or add `BREAKING CHANGE:` in footer
+- `feat(api)!: remove deprecated v1 endpoints`
+
+## Documentation
+- Maintain up-to-date README
+- Document public APIs with clear examples
+- Document key architectural decisions
+- Keep documentation in sync with code
+
+## Don't
+- Don't ignore linter warnings
+- Don't skip error handling
+- Don't commit commented-out code
+- Don't use overly clever solutions when simple ones suffice
+- Don't ignore edge cases

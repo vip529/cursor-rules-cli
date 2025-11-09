@@ -1,0 +1,97 @@
+---
+description: .NET and ASP.NET Core best practices
+globs: ['**/Program.cs', '**/Startup.cs', '**/Controllers/**', '**/appsettings.json']
+---
+
+# .NET & ASP.NET Core Best Practices
+
+## Project Structure
+- **Clean Architecture**: Separate concerns into layers (API, Application, Domain, Infrastructure)
+- **Feature folders**: Organize by feature rather than technical concern
+- **Minimal APIs**: Use minimal APIs for simple endpoints (C# 10+)
+- **Controllers**: Use controllers for complex APIs with multiple endpoints
+
+## Dependency Injection
+- **Service registration**: Register services in Program.cs or Startup.cs
+- **Service lifetimes**: Choose appropriate lifetime (Singleton, Scoped, Transient)
+- **Options pattern**: Use IOptions<T> for configuration
+- **Avoid service locator**: Don't inject IServiceProvider
+
+## Middleware
+- **Order matters**: Configure middleware in correct order
+- **Custom middleware**: Create custom middleware for cross-cutting concerns
+- **Exception handling**: Use exception handling middleware
+- **Request pipeline**: Understand request pipeline flow
+
+## Controllers & Actions
+- **Attribute routing**: Use attribute routing over conventional routing
+- **Action results**: Return appropriate IActionResult types
+- **Model binding**: Use model binding for request data
+- **Validation**: Use Data Annotations or FluentValidation
+- **API versioning**: Implement API versioning for public APIs
+
+## Entity Framework Core
+- **DbContext**: Register DbContext with appropriate lifetime (Scoped)
+- **Migrations**: Use migrations for schema changes
+- **Async queries**: Use async methods for database operations
+- **Query optimization**: Use Include() for eager loading, avoid N+1 queries
+- **Tracking**: Use AsNoTracking() for read-only queries
+
+## Configuration
+- **appsettings.json**: Use for configuration
+- **Environment-specific**: Use appsettings.{Environment}.json
+- **User secrets**: Use user secrets for development
+- **Options pattern**: Bind configuration to strongly-typed classes
+
+## Authentication & Authorization
+- **ASP.NET Core Identity**: Use Identity for user management
+- **JWT**: Use JWT for API authentication
+- **Policies**: Define authorization policies
+- **Claims**: Use claims-based authorization
+- **[Authorize] attribute**: Apply authorization at controller/action level
+
+## API Design
+- **RESTful**: Follow REST principles
+- **HTTP methods**: Use appropriate HTTP methods (GET, POST, PUT, DELETE, PATCH)
+- **Status codes**: Return correct HTTP status codes
+- **Swagger/OpenAPI**: Use Swashbuckle for API documentation
+- **Versioning**: Version your APIs
+
+## Logging
+- **ILogger**: Use ILogger<T> for logging
+- **Structured logging**: Use structured logging with Serilog or NLog
+- **Log levels**: Use appropriate log levels
+- **Sensitive data**: Don't log sensitive information
+
+## Performance
+- **Response caching**: Use response caching for cacheable endpoints
+- **Output caching**: Use output caching (ASP.NET Core 7+)
+- **Compression**: Enable response compression
+- **Connection pooling**: Use connection pooling for databases
+- **Async/await**: Use async/await for I/O operations
+
+## Testing
+- **Integration tests**: Use WebApplicationFactory for integration tests
+- **Unit tests**: Test business logic with xUnit/NUnit
+- **Test server**: Use TestServer for API testing
+- **Mocking**: Mock external dependencies
+
+## Security
+- **HTTPS**: Enforce HTTPS in production
+- **CORS**: Configure CORS appropriately
+- **Rate limiting**: Implement rate limiting
+- **Input validation**: Validate all inputs
+- **CSRF**: Enable anti-forgery tokens for forms
+
+## Deployment
+- **Environment variables**: Use environment variables for configuration
+- **Health checks**: Implement health check endpoints
+- **Docker**: Containerize with Docker
+- **Azure**: Deploy to Azure App Service or Azure Container Apps
+
+## Don't
+- Don't use synchronous I/O operations
+- Don't ignore ModelState validation
+- Don't store sensitive data in appsettings.json
+- Don't use AddSingleton for DbContext
+- Don't catch exceptions without logging

@@ -1,0 +1,73 @@
+---
+description: Svelte and SvelteKit best practices
+globs: ['**/*.svelte', '**/svelte.config.*']
+---
+
+# Svelte & SvelteKit Best Practices
+
+## Component Structure
+- **Single file components**: Use .svelte files
+- **Script tag**: Place script at top of component
+- **Reactive declarations**: Use $: for reactive statements
+- **Component naming**: Use PascalCase for component files
+
+## Reactivity
+- **Reactive statements**: Use $: for derived values
+- **Reactive assignments**: Trigger reactivity with assignments
+- **Stores**: Use stores for shared state
+- **Subscriptions**: Auto-subscribe with $ prefix
+
+## Props & Events
+- **Export for props**: Use export let for props
+- **Default values**: Provide default values for optional props
+- **Event forwarding**: Forward events with on:event
+- **createEventDispatcher**: Use for custom events
+
+## Stores
+- **Writable**: Use writable for mutable state
+- **Readable**: Use readable for read-only state
+- **Derived**: Use derived for computed values
+- **Custom stores**: Create custom stores for complex logic
+
+## SvelteKit
+- **File-based routing**: Use +page.svelte for routes
+- **Layouts**: Use +layout.svelte for shared layouts
+- **Load functions**: Use load for data fetching
+- **Form actions**: Use form actions for mutations
+
+## Server vs Client
+- **SSR by default**: Leverage server-side rendering
+- **Client-side**: Use browser check for client-only code
+- **Hydration**: Understand hydration process
+- **Prerendering**: Prerender static pages
+
+## Styling
+- **Scoped styles**: Styles are scoped by default
+- **Global styles**: Use :global() for global styles
+- **CSS variables**: Use CSS variables for theming
+- **Class directive**: Use class: for conditional classes
+
+## Performance
+- **Keyed each blocks**: Use key for each blocks
+- **Lazy loading**: Lazy load components when needed
+- **Transitions**: Use transitions judiciously
+- **Svelte compiler**: Trust the compiler optimizations
+
+## TypeScript
+- **lang="ts"**: Use TypeScript in script tags
+- **Type props**: Type component props
+- **Generic components**: Use generics for reusable components
+- **Type stores**: Type store values
+
+## Testing
+- **Vitest**: Use Vitest for unit tests
+- **Playwright**: Use Playwright for E2E tests
+- **Testing Library**: Use Svelte Testing Library
+- **Component testing**: Test component behavior
+
+## Don't
+- Don't mutate props directly
+- Don't use DOM manipulation directly
+- Don't forget to unsubscribe from stores
+- Don't use onMount for data fetching in SvelteKit
+- Don't ignore TypeScript errors

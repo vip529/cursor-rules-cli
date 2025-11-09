@@ -1,0 +1,51 @@
+---
+description: General coding conventions and best practices
+globs:
+alwaysApply: true
+---
+
+# General Coding Conventions
+
+## General Principles
+
+- Write clean, readable, maintainable code
+- Follow the existing code style and conventions in the repository
+- Keep functions and modules small and focused
+- Use meaningful names for variables, functions, and classes
+- Comment complex logic, but prefer self-documenting code
+
+## Code Changes
+
+- Make diff-ready patches (minimal, focused changes)
+- Test changes before committing
+- Update documentation when changing behavior
+- Keep commits atomic and well-described
+
+## Before Large Refactors
+
+- Ask one clarifying question to ensure understanding
+- Confirm the scope and impact of the change
+- Consider backward compatibility
+- Plan for incremental changes when possible
+
+## Quality Assurance
+
+- Use linters and formatters configured in the project
+- Run existing tests and ensure they pass
+- Write tests for new functionality
+- Fix warnings and errors before committing
+
+## Security & Best Practices
+
+- Validate all external inputs
+- Don't commit secrets or sensitive data
+- Handle errors gracefully
+- Follow language-specific best practices
+
+## Don't
+
+- Don't make unnecessary changes outside the scope
+- Don't ignore existing conventions
+- Don't skip error handling
+- Don't commit commented-out code
+- Don't use overly clever solutions when simple ones suffice

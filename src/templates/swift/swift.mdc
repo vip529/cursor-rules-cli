@@ -1,0 +1,131 @@
+---
+description: Swift programming best practices for iOS/macOS
+globs: ['**/*.swift', '**/Package.swift', '**/*.xcodeproj']
+---
+
+# Swift Best Practices
+
+## Code Style
+- **Naming**: Use camelCase for variables/functions, PascalCase for types
+- **Optionals**: Use optionals properly, avoid force unwrapping
+- **Type inference**: Leverage type inference where clear
+- **Access control**: Use appropriate access levels (private, fileprivate, internal, public)
+
+## Optionals
+- **Optional binding**: Use `if let` and `guard let` for safe unwrapping
+- **Optional chaining**: Use `?` for safe property access
+- **Nil coalescing**: Use `??` for default values
+- **Avoid force unwrap**: Avoid `!` unless absolutely certain
+- **Implicitly unwrapped**: Use `!` type only when necessary
+
+## Functions & Closures
+- **Parameter labels**: Use descriptive parameter labels
+- **Default parameters**: Use default parameters for optional arguments
+- **Trailing closures**: Use trailing closure syntax
+- **Escaping closures**: Mark escaping closures with `@escaping`
+- **Capture lists**: Use `[weak self]` or `[unowned self]` to avoid retain cycles
+
+## Structs vs Classes
+- **Prefer structs**: Use structs for value types
+- **Use classes**: Use classes when reference semantics needed
+- **Protocols**: Use protocols for abstraction
+- **Value types**: Leverage value type semantics
+- **Copy-on-write**: Understand copy-on-write behavior
+
+## Protocols & Extensions
+- **Protocol-oriented**: Embrace protocol-oriented programming
+- **Extensions**: Use extensions to organize code
+- **Protocol extensions**: Provide default implementations
+- **Associated types**: Use associated types for generic protocols
+- **Protocol composition**: Compose protocols with `&`
+
+## Error Handling
+- **throws**: Use `throws` for functions that can error
+- **do-catch**: Use do-catch for error handling
+- **try?**: Use `try?` when error can be ignored
+- **Custom errors**: Create custom error types
+- **Result type**: Use Result<Success, Failure> for async errors
+
+## Memory Management
+- **ARC**: Understand Automatic Reference Counting
+- **Weak references**: Use `weak` to break retain cycles
+- **Unowned references**: Use `unowned` when reference always exists
+- **Capture lists**: Use capture lists in closures
+- **Deinit**: Implement deinit for cleanup
+
+## SwiftUI
+- **Declarative**: Use declarative syntax
+- **State management**: Use @State, @Binding, @ObservedObject, @StateObject
+- **View composition**: Break views into smaller components
+- **Modifiers**: Use view modifiers for styling
+- **PreviewProvider**: Provide previews for development
+
+## UIKit
+- **MVC/MVVM**: Use appropriate architecture pattern
+- **Storyboards vs Code**: Choose based on team preference
+- **Auto Layout**: Use Auto Layout for responsive UIs
+- **Delegation**: Use delegation pattern appropriately
+- **Lifecycle**: Understand view controller lifecycle
+
+## Concurrency
+- **async/await**: Use async/await for asynchronous code
+- **Task**: Use Task for concurrent operations
+- **Actor**: Use actors for thread-safe state
+- **MainActor**: Use @MainActor for UI updates
+- **Structured concurrency**: Follow structured concurrency principles
+
+## Collections
+- **Arrays**: Use for ordered collections
+- **Sets**: Use for unique unordered collections
+- **Dictionaries**: Use for key-value pairs
+- **Higher-order functions**: Use map, filter, reduce
+- **Lazy collections**: Use lazy for performance
+
+## Property Wrappers
+- **@State**: Use for local view state (SwiftUI)
+- **@Binding**: Use for two-way binding (SwiftUI)
+- **@Published**: Use for observable properties
+- **Custom wrappers**: Create custom property wrappers
+- **@AppStorage**: Use for UserDefaults (SwiftUI)
+
+## Testing
+- **XCTest**: Use XCTest for unit testing
+- **Test naming**: Use descriptive test names
+- **Given-When-Then**: Follow GWT pattern
+- **Mocking**: Use protocols for mocking
+- **UI testing**: Use XCUITest for UI tests
+
+## Networking
+- **URLSession**: Use URLSession for networking
+- **Codable**: Use Codable for JSON parsing
+- **async/await**: Use async/await for network calls
+- **Error handling**: Handle network errors properly
+- **Alamofire**: Consider Alamofire for complex networking
+
+## Data Persistence
+- **UserDefaults**: Use for simple key-value storage
+- **Core Data**: Use for complex object graphs
+- **SwiftData**: Use SwiftData for modern persistence (iOS 17+)
+- **Keychain**: Use Keychain for sensitive data
+- **File system**: Use for file storage
+
+## Performance
+- **Lazy initialization**: Use lazy for expensive properties
+- **Value types**: Prefer value types for performance
+- **Copy-on-write**: Leverage COW for large structs
+- **Instruments**: Use Instruments for profiling
+- **Avoid premature optimization**: Profile before optimizing
+
+## Security
+- **Keychain**: Store sensitive data in Keychain
+- **App Transport Security**: Configure ATS properly
+- **Input validation**: Validate all user inputs
+- **Code obfuscation**: Consider obfuscation for sensitive code
+- **Certificate pinning**: Use for API security
+
+## Don't
+- Don't force unwrap optionals unnecessarily
+- Don't create retain cycles with closures
+- Don't use implicitly unwrapped optionals carelessly
+- Don't ignore compiler warnings
+- Don't use `as!` without being certain of type

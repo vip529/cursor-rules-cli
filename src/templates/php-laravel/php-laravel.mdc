@@ -1,0 +1,108 @@
+---
+description: PHP Laravel framework best practices
+globs: ['**/*.php', '**/composer.json', '**/artisan']
+---
+
+# PHP Laravel Best Practices
+
+## Project Structure
+- **MVC pattern**: Follow Model-View-Controller pattern
+- **Service layer**: Extract business logic into services
+- **Repository pattern**: Use repositories for data access
+- **Actions**: Use single-action controllers for focused endpoints
+
+## Eloquent ORM
+- **Models**: Use Eloquent models for database tables
+- **Relationships**: Define relationships in models
+- **Query optimization**: Use eager loading to avoid N+1 queries
+- **Scopes**: Use query scopes for reusable queries
+- **Accessors/Mutators**: Use for data transformation
+
+## Routing
+- **Resource routes**: Use resource routes for RESTful controllers
+- **Route groups**: Group related routes
+- **Middleware**: Apply middleware to routes
+- **Route model binding**: Use for automatic model injection
+- **API routes**: Separate API routes in routes/api.php
+
+## Controllers
+- **Thin controllers**: Keep controllers thin, move logic to services
+- **Single responsibility**: One action per method
+- **Form requests**: Use form requests for validation
+- **Resource controllers**: Use resource controllers for CRUD operations
+- **API resources**: Use API resources for JSON responses
+
+## Validation
+- **Form requests**: Use form request classes for validation
+- **Validation rules**: Define clear validation rules
+- **Custom rules**: Create custom validation rules when needed
+- **Error messages**: Provide clear error messages
+
+## Database
+- **Migrations**: Use migrations for schema changes
+- **Seeders**: Use seeders for test data
+- **Factories**: Use factories for model generation
+- **Transactions**: Use transactions for multi-step operations
+- **Query builder**: Use query builder for complex queries
+
+## Authentication & Authorization
+- **Laravel Sanctum**: Use Sanctum for API authentication
+- **Laravel Passport**: Use Passport for OAuth2
+- **Policies**: Use policies for authorization logic
+- **Gates**: Use gates for simple authorization checks
+- **Middleware**: Use auth middleware for protected routes
+
+## Blade Templates
+- **Components**: Use Blade components for reusable UI
+- **Layouts**: Use layouts for consistent page structure
+- **Directives**: Use Blade directives (@if, @foreach, etc.)
+- **Slots**: Use slots for flexible components
+- **CSRF**: Always include CSRF token in forms
+
+## Queues & Jobs
+- **Jobs**: Use jobs for time-consuming tasks
+- **Queues**: Configure queue drivers (Redis, database)
+- **Job chaining**: Chain jobs for sequential execution
+- **Failed jobs**: Handle failed jobs properly
+- **Horizon**: Use Horizon for queue monitoring
+
+## Testing
+- **PHPUnit**: Use PHPUnit for testing
+- **Feature tests**: Test complete features
+- **Unit tests**: Test individual units
+- **Factories**: Use factories for test data
+- **Database testing**: Use in-memory database for tests
+
+## API Development
+- **API resources**: Use API resources for transforming models
+- **Versioning**: Version your APIs
+- **Rate limiting**: Implement rate limiting
+- **Pagination**: Paginate large datasets
+- **Error handling**: Return consistent error responses
+
+## Performance
+- **Caching**: Use Laravel's caching system
+- **Query optimization**: Optimize database queries
+- **Eager loading**: Use eager loading to reduce queries
+- **Queue jobs**: Move slow operations to queues
+- **Octane**: Consider Laravel Octane for performance
+
+## Security
+- **CSRF protection**: Enable CSRF protection
+- **SQL injection**: Use Eloquent or query builder
+- **XSS protection**: Use Blade's automatic escaping
+- **Mass assignment**: Protect against mass assignment
+- **Environment variables**: Store secrets in .env
+
+## Artisan Commands
+- **Custom commands**: Create custom Artisan commands
+- **Scheduling**: Use task scheduling for cron jobs
+- **Command options**: Use options and arguments
+- **Testing**: Test Artisan commands
+
+## Don't
+- Don't put business logic in controllers
+- Don't ignore validation
+- Don't use raw SQL queries unnecessarily
+- Don't commit .env file
+- Don't skip migrations

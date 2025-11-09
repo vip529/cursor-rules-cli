@@ -1,0 +1,117 @@
+---
+description: Java Spring Boot framework best practices
+globs: ['**/*.java', '**/pom.xml', '**/build.gradle', '**/application.properties']
+---
+
+# Java Spring Boot Best Practices
+
+## Project Structure
+- **Layered architecture**: Separate controller, service, and repository layers
+- **Package by feature**: Organize by feature rather than layer
+- **DTOs**: Use Data Transfer Objects for API requests/responses
+- **Entities**: Keep JPA entities separate from DTOs
+
+## Dependency Injection
+- **Constructor injection**: Prefer constructor injection over field injection
+- **@Autowired**: Use @Autowired on constructors (or omit for single constructor)
+- **Interfaces**: Program to interfaces, not implementations
+- **Component scanning**: Use @ComponentScan appropriately
+
+## Controllers
+- **@RestController**: Use for REST APIs
+- **@RequestMapping**: Use for route mapping
+- **HTTP methods**: Use @GetMapping, @PostMapping, @PutMapping, @DeleteMapping
+- **@Valid**: Use for request validation
+- **ResponseEntity**: Return ResponseEntity for full control
+
+## Services
+- **@Service**: Mark service classes with @Service
+- **Business logic**: Keep business logic in service layer
+- **Transactions**: Use @Transactional for database transactions
+- **Exception handling**: Handle exceptions in service layer
+
+## Repositories
+- **Spring Data JPA**: Use Spring Data JPA for data access
+- **JpaRepository**: Extend JpaRepository for CRUD operations
+- **Custom queries**: Use @Query for custom queries
+- **Query methods**: Use method naming conventions for queries
+- **Specifications**: Use Specifications for complex queries
+
+## Configuration
+- **application.properties**: Use for configuration
+- **@ConfigurationProperties**: Use for type-safe configuration
+- **Profiles**: Use profiles for environment-specific config
+- **@Value**: Use for simple property injection
+
+## Validation
+- **Bean Validation**: Use JSR-303 annotations (@NotNull, @Size, etc.)
+- **@Valid**: Validate request bodies
+- **Custom validators**: Create custom validation annotations
+- **Error handling**: Return validation errors in consistent format
+
+## Exception Handling
+- **@ControllerAdvice**: Use for global exception handling
+- **@ExceptionHandler**: Handle specific exceptions
+- **Custom exceptions**: Create custom exception classes
+- **Error responses**: Return consistent error response format
+
+## Security
+- **Spring Security**: Use Spring Security for authentication/authorization
+- **JWT**: Use JWT for stateless authentication
+- **@PreAuthorize**: Use for method-level security
+- **CORS**: Configure CORS appropriately
+- **Password encoding**: Use BCrypt for password hashing
+
+## Database
+- **JPA/Hibernate**: Use JPA with Hibernate
+- **Entities**: Define JPA entities with proper annotations
+- **Relationships**: Define relationships (@OneToMany, @ManyToOne, etc.)
+- **Lazy loading**: Use lazy loading for associations
+- **Liquibase/Flyway**: Use for database migrations
+
+## Testing
+- **JUnit 5**: Use JUnit 5 for testing
+- **@SpringBootTest**: Use for integration tests
+- **@WebMvcTest**: Use for controller tests
+- **@DataJpaTest**: Use for repository tests
+- **Mockito**: Use Mockito for mocking
+
+## REST API Design
+- **RESTful**: Follow REST principles
+- **HTTP status codes**: Return appropriate status codes
+- **HATEOAS**: Consider HATEOAS for discoverability
+- **Versioning**: Version your APIs
+- **Swagger/OpenAPI**: Use SpringDoc for API documentation
+
+## Logging
+- **SLF4J**: Use SLF4J for logging
+- **Logback**: Use Logback as logging implementation
+- **Log levels**: Use appropriate log levels
+- **Structured logging**: Use structured logging format
+- **Don't log secrets**: Never log sensitive information
+
+## Performance
+- **Caching**: Use Spring Cache abstraction
+- **Connection pooling**: Configure connection pool (HikariCP)
+- **Async processing**: Use @Async for async operations
+- **Pagination**: Implement pagination for large datasets
+- **Query optimization**: Optimize database queries
+
+## Actuator
+- **Spring Boot Actuator**: Use for monitoring and management
+- **Health checks**: Implement custom health checks
+- **Metrics**: Expose metrics for monitoring
+- **Endpoints**: Secure actuator endpoints
+
+## Build Tools
+- **Maven/Gradle**: Use Maven or Gradle for builds
+- **Dependencies**: Keep dependencies up to date
+- **Plugins**: Use appropriate plugins
+- **Multi-module**: Use multi-module projects for large apps
+
+## Don't
+- Don't use field injection
+- Don't put business logic in controllers
+- Don't ignore exception handling
+- Don't use lazy loading in DTOs
+- Don't skip validation

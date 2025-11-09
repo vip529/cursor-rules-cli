@@ -1,0 +1,109 @@
+---
+description: Kotlin programming best practices
+globs: ['**/*.kt', '**/*.kts', '**/build.gradle.kts']
+---
+
+# Kotlin Best Practices
+
+## Code Style
+- **Naming**: Use camelCase for functions/variables, PascalCase for classes
+- **Immutability**: Prefer `val` over `var`
+- **Null safety**: Leverage Kotlin's null safety features
+- **Data classes**: Use data classes for DTOs and value objects
+
+## Functions
+- **Expression functions**: Use single-expression functions when possible
+- **Default parameters**: Use default parameters instead of overloads
+- **Named arguments**: Use named arguments for clarity
+- **Extension functions**: Use extension functions to extend existing classes
+- **Infix functions**: Use infix notation for DSL-like APIs
+
+## Null Safety
+- **Nullable types**: Use `?` for nullable types
+- **Safe calls**: Use `?.` for safe property access
+- **Elvis operator**: Use `?:` for default values
+- **Not-null assertion**: Avoid `!!` unless absolutely necessary
+- **let function**: Use `let` for null-safe operations
+
+## Collections
+- **Immutable collections**: Use immutable collections by default
+- **Collection operations**: Use map, filter, reduce, etc.
+- **Sequences**: Use sequences for lazy evaluation
+- **List vs Set vs Map**: Choose appropriate collection type
+- **Destructuring**: Use destructuring for pairs and data classes
+
+## Coroutines
+- **suspend functions**: Use suspend for async operations
+- **Coroutine scope**: Use appropriate coroutine scope
+- **launch vs async**: Use launch for fire-and-forget, async for results
+- **Dispatchers**: Use appropriate dispatcher (IO, Default, Main)
+- **Flow**: Use Flow for reactive streams
+
+## Classes & Objects
+- **Data classes**: Use for simple data holders
+- **Sealed classes**: Use for restricted class hierarchies
+- **Object declarations**: Use for singletons
+- **Companion objects**: Use for static-like members
+- **Interfaces**: Prefer interfaces over abstract classes
+
+## Scope Functions
+- **let**: Use for null-safe operations and transformations
+- **apply**: Use for object configuration
+- **also**: Use for side effects
+- **run**: Use for executing a block and returning result
+- **with**: Use for calling multiple methods on an object
+
+## Delegation
+- **by keyword**: Use delegation with `by`
+- **Lazy initialization**: Use `by lazy` for lazy properties
+- **Observable properties**: Use `Delegates.observable`
+- **Property delegation**: Create custom property delegates
+
+## Android Development
+- **ViewBinding**: Use ViewBinding instead of findViewById
+- **Jetpack Compose**: Use Compose for modern UI
+- **ViewModel**: Use ViewModel for UI state
+- **LiveData/Flow**: Use for observable data
+- **Room**: Use Room for local database
+
+## Spring Boot with Kotlin
+- **Constructor injection**: Use constructor injection
+- **Data classes for DTOs**: Use data classes for request/response
+- **Extension functions**: Use for utility functions
+- **Coroutines**: Use coroutines for async operations
+- **DSL builders**: Use Kotlin DSL for configuration
+
+## Testing
+- **JUnit 5**: Use JUnit 5 for testing
+- **Kotest**: Consider Kotest for Kotlin-specific features
+- **MockK**: Use MockK for mocking
+- **Coroutine testing**: Use runTest for coroutine tests
+- **Assertions**: Use expressive assertion libraries
+
+## Functional Programming
+- **Higher-order functions**: Use functions as parameters
+- **Lambda expressions**: Use lambdas for concise code
+- **Function types**: Use function types for callbacks
+- **Inline functions**: Use inline for performance-critical lambdas
+- **Immutability**: Prefer immutable data structures
+
+## Performance
+- **Inline classes**: Use inline classes for type-safe wrappers
+- **Inline functions**: Use inline for higher-order functions
+- **Sequences**: Use sequences for large collections
+- **Avoid boxing**: Be aware of boxing with nullable types
+- **Companion object**: Avoid heavy initialization in companion objects
+
+## Interoperability
+- **Java interop**: Understand Java interoperability
+- **@JvmStatic**: Use for Java-friendly static methods
+- **@JvmOverloads**: Use for default parameters in Java
+- **@JvmField**: Use for public fields in Java
+- **Platform types**: Handle platform types carefully
+
+## Don't
+- Don't use `!!` unnecessarily
+- Don't ignore null safety
+- Don't use `var` when `val` suffices
+- Don't create unnecessary classes
+- Don't ignore coroutine cancellation

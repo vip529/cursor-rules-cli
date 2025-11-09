@@ -1,0 +1,86 @@
+---
+description: Python FastAPI framework best practices
+globs: ['**/*.py', '**/main.py', '**/api/**']
+---
+
+# Python FastAPI Best Practices
+
+## Project Structure
+- **Routers**: Organize endpoints using APIRouter
+- **Dependencies**: Use dependency injection for shared logic
+- **Models**: Separate Pydantic models from database models
+- **Services**: Keep business logic in service layer
+
+## Path Operations
+- **HTTP methods**: Use appropriate HTTP methods (GET, POST, PUT, DELETE, PATCH)
+- **Status codes**: Return proper HTTP status codes
+- **Response models**: Always define response_model for type safety
+- **Path parameters**: Use path parameters for resource identification
+- **Query parameters**: Use query parameters for filtering and pagination
+
+## Pydantic Models
+- **BaseModel**: Use Pydantic BaseModel for request/response schemas
+- **Validation**: Leverage Pydantic validators for input validation
+- **Config**: Use model Config for ORM mode and other settings
+- **Field**: Use Field() for additional validation and metadata
+
+## Dependency Injection
+- **Depends**: Use Depends() for dependency injection
+- **Reusable dependencies**: Create reusable dependencies for common logic
+- **Database sessions**: Inject database sessions as dependencies
+- **Authentication**: Use dependencies for authentication and authorization
+
+## Database
+- **SQLAlchemy**: Use SQLAlchemy for database operations
+- **Async**: Use async database drivers for better performance
+- **Sessions**: Use context managers for database sessions
+- **Migrations**: Use Alembic for database migrations
+
+## Authentication & Security
+- **OAuth2**: Use OAuth2 with Password flow for authentication
+- **JWT**: Use JWT tokens for stateless authentication
+- **Password hashing**: Use bcrypt or passlib for password hashing
+- **CORS**: Configure CORS properly for API access
+- **API keys**: Use API key authentication when appropriate
+
+## Async Operations
+- **async/await**: Use async/await for I/O-bound operations
+- **Background tasks**: Use BackgroundTasks for non-blocking operations
+- **Async database**: Use async database drivers (asyncpg, aiomysql)
+
+## Error Handling
+- **HTTPException**: Raise HTTPException for API errors
+- **Exception handlers**: Use exception handlers for custom error responses
+- **Validation errors**: Return clear validation error messages
+- **Status codes**: Use appropriate status codes for different errors
+
+## Documentation
+- **Docstrings**: Write clear docstrings for path operations
+- **OpenAPI**: Leverage automatic OpenAPI documentation
+- **Tags**: Use tags to organize API endpoints
+- **Examples**: Provide examples in schema definitions
+
+## Testing
+- **TestClient**: Use FastAPI TestClient for testing
+- **Pytest**: Use pytest for test framework
+- **Fixtures**: Use fixtures for test data and dependencies
+- **Async tests**: Use pytest-asyncio for async tests
+
+## Performance
+- **Response caching**: Implement caching for expensive operations
+- **Connection pooling**: Use connection pooling for databases
+- **Pagination**: Implement pagination for large datasets
+- **Compression**: Enable response compression
+
+## Type Hints
+- **Strict typing**: Use type hints for all functions and variables
+- **Optional**: Use Optional for nullable values
+- **Union**: Use Union for multiple possible types
+- **Generic**: Use Generic types when appropriate
+
+## Don't
+- Don't use synchronous database operations in async endpoints
+- Don't ignore Pydantic validation errors
+- Don't store sensitive data in logs
+- Don't use mutable default arguments
+- Don't skip type hints

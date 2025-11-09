@@ -1,0 +1,80 @@
+---
+description: Rust programming best practices
+globs: ['**/*.rs', '**/Cargo.toml']
+---
+
+# Rust Best Practices
+
+## Project Structure
+- **Cargo workspace**: Use workspaces for multi-crate projects
+- **Module organization**: Organize code into logical modules
+- **lib vs bin**: Separate library and binary code
+- **Tests**: Co-locate tests with code
+
+## Ownership & Borrowing
+- **Ownership rules**: Understand and follow ownership rules
+- **Borrowing**: Prefer borrowing over ownership transfer
+- **Lifetimes**: Use explicit lifetimes when needed
+- **Clone sparingly**: Avoid unnecessary clones
+
+## Error Handling
+- **Result type**: Use Result for recoverable errors
+- **Option type**: Use Option for optional values
+- **? operator**: Use ? for error propagation
+- **Custom errors**: Create custom error types
+- **thiserror/anyhow**: Use thiserror for libraries, anyhow for applications
+
+## Types & Traits
+- **Strong typing**: Leverage Rust's type system
+- **Traits**: Use traits for shared behavior
+- **Generic types**: Use generics for reusable code
+- **Associated types**: Use associated types in traits
+
+## Memory Safety
+- **No unsafe**: Avoid unsafe code unless necessary
+- **Smart pointers**: Use Box, Rc, Arc appropriately
+- **Interior mutability**: Use RefCell, Mutex when needed
+- **Memory leaks**: Prevent memory leaks with proper Drop
+
+## Concurrency
+- **Send & Sync**: Understand Send and Sync traits
+- **Channels**: Use channels for message passing
+- **Mutex/RwLock**: Use for shared state
+- **Async/await**: Use async/await for async operations
+
+## Iterators
+- **Iterator trait**: Use iterators over loops
+- **Lazy evaluation**: Leverage lazy evaluation
+- **Combinators**: Use map, filter, fold, etc.
+- **collect**: Collect into appropriate collections
+
+## Cargo & Dependencies
+- **Semantic versioning**: Follow semver for versions
+- **Feature flags**: Use features for optional functionality
+- **Minimal dependencies**: Keep dependencies minimal
+- **Lock file**: Commit Cargo.lock for binaries
+
+## Performance
+- **Zero-cost abstractions**: Use Rust abstractions
+- **Profiling**: Profile before optimizing
+- **Inline**: Use #[inline] judiciously
+- **Benchmarking**: Use criterion for benchmarks
+
+## Testing
+- **Unit tests**: Write unit tests in same file
+- **Integration tests**: Use tests/ directory
+- **Doc tests**: Write doc tests in documentation
+- **Test coverage**: Use cargo-tarpaulin
+
+## Documentation
+- **Doc comments**: Use /// for public APIs
+- **Examples**: Include examples in docs
+- **Crate docs**: Write crate-level documentation
+- **README**: Maintain comprehensive README
+
+## Don't
+- Don't use unwrap() in production code
+- Don't ignore compiler warnings
+- Don't use unsafe unnecessarily
+- Don't clone excessively
+- Don't use panic! for error handling

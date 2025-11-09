@@ -1,0 +1,79 @@
+---
+description: Vue.js 3 best practices and conventions
+globs: ['**/*.vue', '**/vite.config.*', '**/vue.config.*']
+---
+
+# Vue.js 3 Best Practices
+
+## Component Structure
+- **Composition API**: Prefer Composition API over Options API for new components
+- **Script setup**: Use `<script setup>` for cleaner, more concise components
+- **Single File Components**: Use .vue files with template, script, and style sections
+- **Component naming**: Use PascalCase for component names
+
+## Composition API
+- **ref vs reactive**: Use `ref` for primitives, `reactive` for objects
+- **Computed**: Use `computed` for derived state
+- **Watch**: Use `watch` or `watchEffect` for side effects
+- **Lifecycle hooks**: Use composition API lifecycle hooks (onMounted, onUnmounted, etc.)
+
+## Props & Emits
+- **Props definition**: Define props with types using TypeScript or PropType
+- **Props validation**: Add validation for required props and defaults
+- **Emits**: Define emits explicitly with defineEmits
+- **v-model**: Use v-model for two-way binding with proper emit
+
+## State Management
+- **Pinia**: Use Pinia for global state management
+- **Composables**: Extract reusable logic into composables
+- **Provide/Inject**: Use provide/inject for dependency injection
+- **Local state**: Keep state local when possible
+
+## Templates
+- **v-for keys**: Always use unique keys with v-for
+- **v-if vs v-show**: Use v-if for conditional rendering, v-show for toggling visibility
+- **Event modifiers**: Use event modifiers (.prevent, .stop, etc.)
+- **Directives**: Use built-in directives appropriately
+
+## Routing
+- **Vue Router**: Use Vue Router 4 for routing
+- **Route guards**: Use navigation guards for authentication
+- **Lazy loading**: Lazy load route components for code splitting
+- **Named routes**: Use named routes for better maintainability
+
+## Performance
+- **v-once**: Use v-once for static content
+- **v-memo**: Use v-memo for expensive computations
+- **Async components**: Use defineAsyncComponent for code splitting
+- **Keep-alive**: Use keep-alive for component caching
+
+## TypeScript
+- **Type safety**: Use TypeScript for type safety
+- **defineComponent**: Use defineComponent for better type inference
+- **Generic components**: Use generic components for reusable typed components
+- **Type imports**: Import types from Vue
+
+## Styling
+- **Scoped styles**: Use scoped styles to avoid CSS conflicts
+- **CSS modules**: Use CSS modules for component-specific styles
+- **CSS variables**: Use CSS variables for theming
+- **Class binding**: Use object/array syntax for dynamic classes
+
+## Testing
+- **Vitest**: Use Vitest for unit testing
+- **Vue Test Utils**: Use Vue Test Utils for component testing
+- **E2E**: Use Playwright or Cypress for E2E testing
+- **Test user behavior**: Test user interactions, not implementation
+
+## Build & Dev
+- **Vite**: Use Vite for fast development and builds
+- **Environment variables**: Use VITE_ prefix for env variables
+- **Code splitting**: Configure code splitting for optimal bundle size
+- **Tree shaking**: Ensure proper tree shaking for smaller bundles
+
+## Don't
+- Don't mutate props directly
+- Don't use v-for with v-if on same element
+- Don't forget to clean up side effects in onUnmounted
+- Don't use arrow functions for methods in Options API
+- Don't ignore Vue DevTools warnings

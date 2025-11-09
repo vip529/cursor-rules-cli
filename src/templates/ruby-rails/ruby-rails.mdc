@@ -1,0 +1,107 @@
+---
+description: Ruby on Rails framework best practices
+globs: ['**/*.rb', '**/Gemfile', '**/config/routes.rb']
+---
+
+# Ruby on Rails Best Practices
+
+## Project Structure
+- **MVC pattern**: Follow Model-View-Controller architecture
+- **Concerns**: Use concerns for shared behavior
+- **Services**: Extract complex logic into service objects
+- **Decorators**: Use decorators for presentation logic
+
+## Models
+- **ActiveRecord**: Use ActiveRecord for database operations
+- **Validations**: Define validations in models
+- **Associations**: Define relationships between models
+- **Scopes**: Use scopes for reusable queries
+- **Callbacks**: Use callbacks judiciously (before_save, after_create, etc.)
+
+## Controllers
+- **Thin controllers**: Keep controllers thin
+- **Strong parameters**: Use strong parameters for mass assignment protection
+- **Before actions**: Use before_action for common logic
+- **RESTful routes**: Follow RESTful conventions
+- **Respond to formats**: Handle multiple response formats (HTML, JSON)
+
+## Views
+- **Partials**: Use partials for reusable view components
+- **Helpers**: Use helpers for view logic
+- **Layouts**: Use layouts for consistent page structure
+- **ERB/Haml**: Use ERB or Haml for templates
+- **Avoid logic**: Keep complex logic out of views
+
+## Routing
+- **RESTful routes**: Use resources for RESTful routes
+- **Namespaces**: Use namespaces for API versioning
+- **Constraints**: Use route constraints when needed
+- **Concerns**: Use routing concerns for shared routes
+- **Member/Collection**: Use member and collection routes
+
+## Database
+- **Migrations**: Use migrations for schema changes
+- **Seeds**: Use seeds for initial data
+- **Indexes**: Add indexes for frequently queried columns
+- **Foreign keys**: Use foreign keys for referential integrity
+- **N+1 queries**: Avoid N+1 queries with includes/joins
+
+## ActiveJob
+- **Background jobs**: Use ActiveJob for async tasks
+- **Queue adapters**: Configure queue adapter (Sidekiq, Resque)
+- **Job naming**: Use descriptive job names
+- **Error handling**: Handle job failures gracefully
+- **Testing**: Test background jobs
+
+## Testing
+- **RSpec**: Use RSpec for testing
+- **FactoryBot**: Use FactoryBot for test data
+- **Request specs**: Test API endpoints
+- **Model specs**: Test model validations and methods
+- **System specs**: Test full user workflows
+
+## API Development
+- **JSON API**: Follow JSON API specification
+- **Serializers**: Use serializers for JSON responses (ActiveModel::Serializers, Jbuilder)
+- **Versioning**: Version your APIs
+- **Authentication**: Use Devise or JWT for authentication
+- **Rate limiting**: Implement rate limiting
+
+## Security
+- **Strong parameters**: Protect against mass assignment
+- **CSRF protection**: Enable CSRF protection
+- **SQL injection**: Use ActiveRecord to prevent SQL injection
+- **XSS protection**: Rails escapes output by default
+- **Secrets**: Store secrets in credentials.yml.enc
+
+## Performance
+- **Caching**: Use Rails caching (fragment, action, page)
+- **Eager loading**: Use includes to avoid N+1 queries
+- **Database indexes**: Add indexes for performance
+- **Background jobs**: Move slow operations to background
+- **Query optimization**: Optimize database queries
+
+## Gems
+- **Minimal gems**: Keep gem dependencies minimal
+- **Bundler**: Use Bundler for dependency management
+- **Version locking**: Lock gem versions in Gemfile.lock
+- **Security**: Keep gems updated for security
+
+## Configuration
+- **Environment files**: Use environment-specific configs
+- **Credentials**: Use Rails credentials for secrets
+- **Environment variables**: Use ENV for configuration
+- **Initializers**: Use initializers for gem configuration
+
+## Asset Pipeline
+- **Sprockets/Webpacker**: Use asset pipeline for assets
+- **Precompilation**: Precompile assets for production
+- **CDN**: Use CDN for static assets
+- **Compression**: Enable asset compression
+
+## Don't
+- Don't put business logic in views
+- Don't skip validations
+- Don't use callbacks for complex logic
+- Don't ignore N+1 query warnings
+- Don't commit secrets to version control

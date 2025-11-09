@@ -1,0 +1,146 @@
+---
+description: Go + Fiber framework conventions and patterns
+globs:
+alwaysApply: true
+---
+
+# Go + Fiber Framework
+
+## Project Structure
+
+```
+/cmd
+  /api          # Main application entry point
+/internal
+  /handler      # HTTP handlers (controllers)
+  /service      # Business logic
+  /repository   # Data access layer
+  /model        # Domain models
+  /middleware   # Custom middleware
+/pkg            # Public libraries (if any)
+/migrations     # Database migrations
+```
+
+## General Go Conventions
+
+- Follow standard Go project layout
+- Use `gofmt` and `golint` consistently
+- Prefer composition over inheritance
+- Keep interfaces small and focused
+- Handle errors explicitly; don't ignore them
+
+## Fiber Framework
+
+- Use Fiber v2+ for high-performance HTTP
+- Leverage middleware for cross-cutting concerns (auth, logging, CORS)
+- Group routes logically
+- Return proper HTTP status codes
+- Use Fiber's built-in validation or integrate with `go-playground/validator`
+
+### Example Handler
+
+```go
+func (h *UserHandler) GetUser(c *fiber.Ctx) error {
+    id := c.Params("id")
+    user, err := h.service.GetUserByID(c.Context(), id)
+    if err != nil {
+        return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+            "error": "user not found",
+        })
+    }
+    return c.JSON(user)
+}
+```
+
+## Database (pgx)
+
+- Use `pgx` for PostgreSQL (performance + features)
+- Use connection pooling (`pgxpool`)
+- Always pass `context.Context` for cancellation/timeouts
+- Use prepared statements for repeated queries
+- Handle `pgx.ErrNoRows` explicitly
+
+### Example Query
+
+```go
+func (r *UserRepository) GetByID(ctx context.Context, id string) (*model.User, error) {
+    var user model.User
+    err := r.pool.QueryRow(ctx, "SELECT id, name, email FROM users WHERE id = $1", id).
+        Scan(&user.ID, &user.Name, &user.Email)
+    if err != nil {
+        if errors.Is(err, pgx.ErrNoRows) {
+            return nil, ErrUserNotFound
+        }
+        return nil, err
+    }
+    return &user, nil
+}
+```
+
+## Logging (zap)
+
+- Use structured logging with `uber-go/zap`
+- Log at appropriate levels (Debug, Info, Warn, Error)
+- Include context (request ID, user ID) in logs
+- Avoid logging sensitive data (passwords, tokens)
+
+### Example
+
+```go
+logger.Info("user created",
+    zap.String("user_id", user.ID),
+    zap.String("email", user.Email),
+)
+```
+
+## Context & Timeouts
+
+- Always pass `context.Context` through call chains
+- Set deadlines for external calls (DB, HTTP)
+- Respect context cancellation
+- Use `context.WithTimeout` for operations with time limits
+
+## Testing
+
+- Write table-driven tests
+- Use `testify` for assertions and mocking
+- Test handlers with `net/http/httptest` or Fiber's test utilities
+- Mock external dependencies (DB, APIs)
+- Aim for meaningful coverage
+
+### Example Table-Driven Test
+
+```go
+func TestUserService_GetByID(t *testing.T) {
+    tests := []struct {
+        name    string
+        userID  string
+        want    *model.User
+        wantErr bool
+    }{
+        {"existing user", "123", &model.User{ID: "123"}, false},
+        {"non-existent user", "999", nil, true},
+    }
+
+    for _, tt := range tests {
+        t.Run(tt.name, func(t *testing.T) {
+            // test implementation
+        })
+    }
+}
+```
+
+## Error Handling
+
+- Return errors; don't panic in normal flow
+- Use custom error types for domain errors
+- Wrap errors with context using `fmt.Errorf` with `%w`
+- Log errors before returning HTTP responses
+
+## Don't
+
+- Don't ignore errors (`_ = someFunc()`)
+- Don't use `panic` for regular error handling
+- Don't log and return errors (choose one)
+- Don't use global variables for state
+- Don't skip context propagation

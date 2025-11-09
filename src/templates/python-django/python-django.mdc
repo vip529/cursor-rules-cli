@@ -1,0 +1,80 @@
+---
+description: Python Django framework best practices
+globs: ['**/*.py', '**/manage.py', '**/settings.py']
+---
+
+# Python Django Best Practices
+
+## Project Structure
+- **Apps**: Keep apps small and focused on single domain
+- **Settings**: Use environment-based settings (dev, staging, prod)
+- **Migrations**: Never edit migrations after they're committed
+- **Static files**: Use `collectstatic` for production
+
+## Models
+- **Field choices**: Use `TextChoices` or `IntegerChoices` for field choices
+- **Meta options**: Define `verbose_name`, `verbose_name_plural`, and `ordering`
+- **Custom managers**: Use custom managers for common queries
+- **Validation**: Implement `clean()` method for model-level validation
+
+## Views
+- **Class-based views**: Prefer CBVs for common patterns (ListView, DetailView, etc.)
+- **Function-based views**: Use FBVs for simple, one-off views
+- **Mixins**: Use mixins for reusable view logic
+- **Permissions**: Check permissions in views, not templates
+
+## URLs
+- **Naming**: Always name URL patterns for reverse lookups
+- **Namespacing**: Use app namespaces to avoid URL name collisions
+- **Path vs re_path**: Use `path()` for simple patterns, `re_path()` for regex
+
+## Templates
+- **Template inheritance**: Use base templates and extend them
+- **Template tags**: Create custom template tags for reusable logic
+- **Filters**: Use filters for data transformation in templates
+- **Context processors**: Use context processors for global template data
+
+## Forms
+- **ModelForms**: Use ModelForms for model-based forms
+- **Validation**: Implement `clean_<field>()` and `clean()` methods
+- **Widgets**: Customize widgets for better UX
+- **CSRF**: Always use CSRF protection
+
+## ORM
+- **select_related**: Use for foreign key and one-to-one relations
+- **prefetch_related**: Use for many-to-many and reverse foreign key relations
+- **Q objects**: Use Q objects for complex queries
+- **Annotations**: Use annotations for computed fields
+- **Raw SQL**: Avoid raw SQL; use ORM query expressions when possible
+
+## Security
+- **SECRET_KEY**: Never commit SECRET_KEY to version control
+- **DEBUG**: Set DEBUG=False in production
+- **ALLOWED_HOSTS**: Configure ALLOWED_HOSTS properly
+- **HTTPS**: Use HTTPS in production
+- **SQL injection**: Use ORM to prevent SQL injection
+- **XSS**: Use template auto-escaping
+
+## Performance
+- **Database indexes**: Add indexes for frequently queried fields
+- **Caching**: Use Django's caching framework
+- **Lazy loading**: Be aware of N+1 query problems
+- **Connection pooling**: Use connection pooling for databases
+
+## Testing
+- **Test organization**: Organize tests in test modules by feature
+- **Test data**: Use fixtures or factories for test data
+- **Coverage**: Aim for high test coverage
+- **Test client**: Use Django test client for integration tests
+
+## Async Support
+- **ASGI**: Use ASGI for async views and middleware
+- **Async views**: Use async views for I/O-bound operations
+- **Sync vs async**: Don't mix sync and async ORM operations
+
+## Don't
+- Don't use `objects.all()` without filtering in production
+- Don't store sensitive data in plain text
+- Don't use `eval()` or `exec()` with user input
+- Don't ignore database migrations
+- Don't use `null=True` on string-based fields

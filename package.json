@@ -1,0 +1,55 @@
+{
+  "name": "@vipin/cursor-rules",
+  "version": "0.1.0",
+  "description": "One-shot Cursor rules generator for your tech stack",
+  "type": "module",
+  "author": {
+    "name": "Vipin Yadav",
+    "url": "https://github.com/vipin"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vipin/cursor-rules-cli.git"
+  },
+  "keywords": [
+    "cursor",
+    "cursor-rules",
+    "ai",
+    "code-generation",
+    "developer-tools",
+    "cli",
+    "typescript",
+    "nextjs",
+    "react",
+    "vue",
+    "angular",
+    "go",
+    "python",
+    "rust"
+  ],
+  "bin": {
+    "cursor-rules": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "prepublishOnly": "npm run build",
+    "clean": "rm -rf dist"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.4.0"
+  }
+}

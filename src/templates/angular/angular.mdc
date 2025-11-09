@@ -1,0 +1,79 @@
+---
+description: Angular framework best practices
+globs: ['**/*.component.ts', '**/*.module.ts', '**/*.service.ts', '**/angular.json']
+---
+
+# Angular Best Practices
+
+## Project Structure
+- **Feature modules**: Organize by feature, not by type
+- **Core module**: Single core module for app-wide services
+- **Shared module**: Shared module for reusable components
+- **Lazy loading**: Lazy load feature modules
+
+## Components
+- **Smart vs Dumb**: Separate container and presentational components
+- **OnPush strategy**: Use OnPush change detection when possible
+- **Component size**: Keep components under 400 lines
+- **Template complexity**: Extract complex templates into child components
+
+## Services
+- **Injectable**: Mark services with @Injectable
+- **providedIn**: Use providedIn: 'root' for singleton services
+- **Service layer**: Keep business logic in services
+- **HTTP**: Use HttpClient for API calls
+
+## RxJS
+- **Observables**: Use observables for async operations
+- **Operators**: Use RxJS operators for data transformation
+- **Unsubscribe**: Always unsubscribe from observables
+- **AsyncPipe**: Prefer async pipe in templates
+
+## State Management
+- **NgRx**: Use NgRx for complex state management
+- **Services**: Use services for simple state
+- **Signals**: Use Angular Signals for reactive state
+- **Immutability**: Keep state immutable
+
+## Forms
+- **Reactive forms**: Prefer reactive forms over template-driven
+- **FormBuilder**: Use FormBuilder for form creation
+- **Validation**: Implement custom validators
+- **FormGroup**: Group related form controls
+
+## Routing
+- **Lazy loading**: Lazy load routes
+- **Guards**: Use guards for route protection
+- **Resolvers**: Use resolvers for pre-fetching data
+- **Route parameters**: Use route parameters for dynamic routes
+
+## Dependency Injection
+- **Constructor injection**: Use constructor injection
+- **Providers**: Configure providers appropriately
+- **Injection tokens**: Use injection tokens for configuration
+- **Tree-shakable**: Make services tree-shakable
+
+## Performance
+- **TrackBy**: Use trackBy with *ngFor
+- **Pure pipes**: Create pure pipes for transformations
+- **OnPush**: Use OnPush change detection
+- **Lazy loading**: Lazy load modules and components
+
+## TypeScript
+- **Strict mode**: Enable strict mode
+- **Type safety**: Use types for everything
+- **Interfaces**: Define interfaces for data models
+- **Enums**: Use enums for constants
+
+## Testing
+- **Jasmine/Karma**: Use Jasmine and Karma for unit tests
+- **TestBed**: Use TestBed for component testing
+- **Mocking**: Mock dependencies in tests
+- **Coverage**: Aim for high test coverage
+
+## Don't
+- Don't manipulate DOM directly
+- Don't subscribe in components without unsubscribing
+- Don't use any type
+- Don't put logic in templates
+- Don't skip error handling

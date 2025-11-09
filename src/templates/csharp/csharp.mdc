@@ -1,0 +1,82 @@
+---
+description: C# programming best practices
+globs: ['**/*.cs', '**/*.csproj']
+---
+
+# C# Best Practices
+
+## Code Style
+- **Naming conventions**: PascalCase for classes/methods, camelCase for private fields, _camelCase for private fields (with underscore)
+- **Properties**: Use auto-properties when possible
+- **Expression-bodied members**: Use for simple one-line methods and properties
+- **String interpolation**: Use `$""` instead of `string.Format` or concatenation
+
+## Modern C# Features
+- **Nullable reference types**: Enable and use nullable reference types
+- **Pattern matching**: Use pattern matching for type checks and switch expressions
+- **Records**: Use records for immutable data types
+- **Init-only properties**: Use `init` for immutable properties after construction
+- **Top-level statements**: Use for simple programs (C# 9+)
+
+## LINQ
+- **Query syntax vs Method syntax**: Prefer method syntax for simple queries
+- **Deferred execution**: Understand deferred vs immediate execution
+- **IEnumerable vs IQueryable**: Use IQueryable for database queries
+- **Avoid multiple enumeration**: Call `.ToList()` or `.ToArray()` when needed
+
+## Async/Await
+- **Async all the way**: Use async/await throughout the call stack
+- **ConfigureAwait**: Use `ConfigureAwait(false)` in library code
+- **Task naming**: Suffix async methods with "Async"
+- **Avoid async void**: Only use async void for event handlers
+- **CancellationToken**: Accept CancellationToken for long-running operations
+
+## Memory Management
+- **IDisposable**: Implement IDisposable for unmanaged resources
+- **using statements**: Use using statements or declarations for disposable objects
+- **Span<T> and Memory<T>**: Use for high-performance scenarios
+- **StringBuilder**: Use StringBuilder for string concatenation in loops
+
+## Collections
+- **Generic collections**: Use generic collections (List<T>, Dictionary<TKey, TValue>)
+- **Immutable collections**: Use ImmutableList, ImmutableDictionary for thread-safe scenarios
+- **Capacity**: Set initial capacity for collections when size is known
+- **LINQ vs loops**: Use LINQ for readability, loops for performance-critical code
+
+## Error Handling
+- **Specific exceptions**: Throw specific exception types
+- **Exception filters**: Use when clauses in catch blocks
+- **Custom exceptions**: Create custom exceptions for domain-specific errors
+- **Don't swallow exceptions**: Always log or handle exceptions properly
+
+## Dependency Injection
+- **Constructor injection**: Prefer constructor injection
+- **Interface dependencies**: Depend on interfaces, not concrete types
+- **Service lifetimes**: Understand Singleton, Scoped, and Transient lifetimes
+- **Avoid service locator**: Don't use service locator pattern
+
+## Testing
+- **Unit tests**: Use xUnit, NUnit, or MSTest
+- **Naming**: Use descriptive test method names
+- **Arrange-Act-Assert**: Follow AAA pattern
+- **Mocking**: Use Moq or NSubstitute for mocking
+- **Test coverage**: Aim for high coverage on business logic
+
+## Performance
+- **ValueTask**: Use ValueTask<T> for hot paths with synchronous results
+- **Struct vs Class**: Use struct for small, immutable types
+- **Avoid boxing**: Be aware of boxing with value types
+- **String pooling**: Use string interning for repeated strings
+
+## Security
+- **Input validation**: Validate all user inputs
+- **SQL injection**: Use parameterized queries or EF Core
+- **Secrets management**: Use Azure Key Vault or user secrets
+- **Authentication**: Use ASP.NET Core Identity or IdentityServer
+
+## Don't
+- Don't use `var` when type is not obvious
+- Don't catch generic Exception without rethrowing
+- Don't use `async void` except for event handlers
+- Don't ignore compiler warnings
+- Don't use `dynamic` unless absolutely necessary

@@ -1,0 +1,32 @@
+# Source files (only ship compiled dist)
+src/
+tsconfig.json
+scripts/
+
+# Development files
+.git/
+.gitignore
+.vscode/
+.cursor/
+*.log
+*.tsbuildinfo
+
+# Test files
+test/
+tests/
+*.test.ts
+*.spec.ts
+
+# Documentation (except README which is in files array)
+docs/
+.github/
+
+# Build artifacts
+node_modules/
+coverage/
+.nyc_output/
+
+# Environment files
+.env
+.env.*
+

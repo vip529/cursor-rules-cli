@@ -1,0 +1,67 @@
+---
+description: NestJS framework best practices
+globs: ['**/*.module.ts', '**/*.controller.ts', '**/*.service.ts']
+---
+
+# NestJS Best Practices
+
+## Architecture
+- **Modules**: Organize code into feature modules
+- **Controllers**: Handle HTTP requests only
+- **Services**: Implement business logic in services
+- **Providers**: Use dependency injection for providers
+
+## Dependency Injection
+- **Constructor injection**: Use constructor injection
+- **Providers**: Register providers in module
+- **Scopes**: Understand provider scopes (singleton, request, transient)
+- **Custom providers**: Use custom providers when needed
+
+## Controllers
+- **Decorators**: Use route decorators (@Get, @Post, etc.)
+- **DTOs**: Use DTOs for request/response validation
+- **Pipes**: Use pipes for validation and transformation
+- **Guards**: Use guards for authentication/authorization
+
+## Services
+- **Injectable**: Mark services with @Injectable()
+- **Single responsibility**: Keep services focused
+- **Error handling**: Throw HTTP exceptions
+- **Async operations**: Use async/await
+
+## Validation
+- **class-validator**: Use class-validator for DTOs
+- **ValidationPipe**: Use ValidationPipe globally
+- **Transform**: Use class-transformer for transformation
+- **Custom validators**: Create custom validators when needed
+
+## Database
+- **TypeORM/Prisma**: Use TypeORM or Prisma
+- **Repository pattern**: Use repository pattern
+- **Transactions**: Use transactions for multi-step operations
+- **Migrations**: Use migration tools
+
+## Authentication
+- **Passport**: Use @nestjs/passport for authentication
+- **JWT**: Use @nestjs/jwt for JWT tokens
+- **Guards**: Implement authentication guards
+- **Strategies**: Use passport strategies
+
+## Testing
+- **Unit tests**: Test services and controllers
+- **E2E tests**: Test complete workflows
+- **Mocking**: Mock dependencies in tests
+- **Test module**: Use Test.createTestingModule()
+
+## Configuration
+- **ConfigModule**: Use @nestjs/config
+- **Environment variables**: Validate env variables
+- **Type safety**: Use typed configuration
+- **Multiple environments**: Support dev, staging, prod
+
+## Don't
+- Don't put business logic in controllers
+- Don't skip validation
+- Don't ignore dependency injection
+- Don't use any type
+- Don't skip error handling

@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+vendor/
+.pnp/
+
+# Build outputs
+dist/
+build/
+out/
+target/
+bin/
+obj/
+
+# Testing
+coverage/
+.nyc_output/
+*.test.js
+*.spec.js
+
+# Environment
+.env
+.env*.local
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Source maps
+*.map
+
+# Assets (often large/binary)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.ico
+*.webp
+*.mp4
+*.webm
+*.woff
+*.woff2
+*.ttf
+*.eot
+*.pdf
+
+# Misc
+.cache/
+tmp/
+temp/
+

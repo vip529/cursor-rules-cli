@@ -1,0 +1,69 @@
+---
+description: Express.js Node.js framework best practices
+globs: ['**/app.js', '**/server.js', '**/routes/**', '**/middleware/**']
+---
+
+# Express.js Best Practices
+
+## Application Structure
+- **Router organization**: Organize routes by feature/resource
+- **Middleware**: Keep middleware in separate files
+- **Controllers**: Separate route handlers from business logic
+- **Services**: Extract business logic into service layer
+
+## Middleware
+- **Order matters**: Apply middleware in correct order
+- **Error handling**: Use error-handling middleware
+- **Async errors**: Use async error wrapper or express-async-errors
+- **Body parsing**: Use express.json() and express.urlencoded()
+
+## Routing
+- **Express Router**: Use express.Router() for modular routes
+- **Route parameters**: Validate route parameters
+- **Query parameters**: Validate and sanitize query params
+- **HTTP methods**: Use appropriate HTTP methods
+
+## Error Handling
+- **Centralized**: Use centralized error handling middleware
+- **Custom errors**: Create custom error classes
+- **Status codes**: Return appropriate HTTP status codes
+- **Error logging**: Log errors for debugging
+
+## Security
+- **Helmet**: Use helmet for security headers
+- **CORS**: Configure CORS properly
+- **Rate limiting**: Implement rate limiting
+- **Input validation**: Validate all inputs
+- **SQL injection**: Use parameterized queries
+- **XSS**: Sanitize user inputs
+
+## Database
+- **Connection pooling**: Use connection pooling
+- **ORM/Query builder**: Use Prisma, TypeORM, or Knex
+- **Transactions**: Use transactions for multi-step operations
+- **Migration**: Use migration tools
+
+## Authentication
+- **JWT**: Use JWT for stateless authentication
+- **Passport**: Use Passport.js for authentication strategies
+- **Sessions**: Use express-session for session management
+- **Password hashing**: Use bcrypt for password hashing
+
+## Performance
+- **Compression**: Use compression middleware
+- **Caching**: Implement caching strategies
+- **Clustering**: Use PM2 or cluster module
+- **Static files**: Serve static files efficiently
+
+## Testing
+- **Jest/Mocha**: Use testing frameworks
+- **Supertest**: Use supertest for API testing
+- **Test coverage**: Aim for high test coverage
+- **Mocking**: Mock external dependencies
+
+## Don't
+- Don't use synchronous functions in production
+- Don't ignore error handling
+- Don't store sensitive data in plain text
+- Don't use deprecated middleware
+- Don't skip input validation

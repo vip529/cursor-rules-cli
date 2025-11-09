@@ -1,0 +1,67 @@
+---
+description: Tailwind CSS best practices and conventions
+globs: ['**/tailwind.config.*', '**/*.css']
+---
+
+# Tailwind CSS Best Practices
+
+## Utility-First Approach
+- **Composition**: Build complex components from utility classes
+- **Avoid custom CSS**: Use utilities instead of writing custom CSS
+- **@apply sparingly**: Use @apply only for extracting component patterns
+- **Inline utilities**: Prefer inline utilities over extracted classes
+
+## Class Organization
+- **Logical grouping**: Group related utilities (layout, spacing, colors, typography)
+- **Responsive design**: Mobile-first, then add responsive modifiers (sm:, md:, lg:)
+- **State variants**: Use hover:, focus:, active: for interactive states
+- **Dark mode**: Use dark: prefix for dark mode styles
+
+## Configuration
+- **Extend theme**: Extend default theme, don't replace it
+- **Custom colors**: Define brand colors in theme
+- **Custom spacing**: Add project-specific spacing values
+- **Plugins**: Use official plugins when needed
+
+## Component Patterns
+- **Reusable classes**: Extract common patterns with @layer components
+- **Variants**: Use @apply for component variants
+- **Base styles**: Define base styles in @layer base
+- **Utilities**: Add custom utilities in @layer utilities
+
+## Performance
+- **Purge CSS**: Configure content paths for tree-shaking
+- **JIT mode**: Use JIT mode for faster builds
+- **Production build**: Always build for production
+- **CDN**: Don't use CDN in production
+
+## Responsive Design
+- **Mobile-first**: Design for mobile first, then scale up
+- **Breakpoints**: Use standard breakpoints (sm, md, lg, xl, 2xl)
+- **Container**: Use container class for max-width layouts
+- **Grid/Flexbox**: Use grid and flex utilities for layouts
+
+## Accessibility
+- **Focus states**: Always style focus states
+- **Color contrast**: Ensure sufficient color contrast
+- **Screen readers**: Use sr-only for screen reader text
+- **Semantic HTML**: Use with semantic HTML elements
+
+## Integration
+- **PostCSS**: Configure PostCSS properly
+- **Autoprefixer**: Use autoprefixer for browser compatibility
+- **CSS imports**: Import Tailwind directives correctly
+- **Framework integration**: Follow framework-specific setup
+
+## Dark Mode
+- **Class strategy**: Use class strategy for manual toggle
+- **Media strategy**: Use media strategy for system preference
+- **Consistent**: Apply dark mode consistently across app
+- **Testing**: Test both light and dark modes
+
+## Don't
+- Don't use inline styles
+- Don't create custom CSS files for every component
+- Don't use arbitrary values excessively
+- Don't ignore responsive design
+- Don't forget to configure purge/content paths

@@ -1,0 +1,92 @@
+---
+description: Node.js TypeScript library development conventions
+globs:
+alwaysApply: true
+---
+
+# Node.js Library (TypeScript)
+
+## Objectives
+
+- Build a reusable, type-safe Node.js library
+- Support both ESM and CJS consumers
+- Minimize dependencies
+- Maintain excellent developer experience
+
+## Build & Distribution
+
+- Use `tsup` or `rslib` for dual ESM/CJS builds
+- Output to `dist/` directory
+- Generate declaration files (`.d.ts`)
+- Include source maps for debugging
+- Configure `package.json` exports field properly:
+
+```json
+{
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}
+```
+
+## Code Guidelines
+
+### TypeScript
+
+- Use strict mode (`strict: true`)
+- Target ES2022 or later
+- Avoid `any`; prefer `unknown` for uncertain types
+- Use generics for reusable, type-safe APIs
+- Export types alongside implementations
+
+### API Design
+
+- Keep public API surface small and focused
+- Use named exports (avoid default exports)
+- Provide clear, narrow interfaces
+- Version breaking changes properly (semver)
+
+### Documentation
+
+- Add JSDoc comments for all public APIs
+- Include usage examples in comments
+- Document edge cases and error conditions
+- Keep README up-to-date with examples
+
+### Dependencies
+
+- Minimize runtime dependencies
+- Prefer Node.js built-ins when possible
+- Use `peerDependencies` for framework integrations
+- Keep `devDependencies` lean
+
+## Testing (Vitest)
+
+- Write tests for all public APIs
+- Test edge cases and error paths
+- Use descriptive test names
+- Aim for high coverage on critical paths
+- Run tests in CI before publishing
+
+## Error Handling
+
+- Throw meaningful errors with context
+- Use custom error classes for different failure modes
+- Document errors in JSDoc
+- Avoid swallowing errors silently
+
+## Don't
+
+- Don't use `console.log` in library code (use a logger or events)
+- Don't rely on global state
+- Don't make breaking changes in minor/patch versions
+- Don't bundle dependencies unless necessary
+- Don't use `process.exit` in library code

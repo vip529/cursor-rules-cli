@@ -1,0 +1,97 @@
+---
+description: Blazor WebAssembly and Server best practices
+globs: ['**/*.razor', '**/Pages/**', '**/Components/**']
+---
+
+# Blazor Best Practices
+
+## Component Structure
+- **Razor components**: Use .razor files for components
+- **Code-behind**: Use partial classes for complex component logic
+- **Component naming**: Use PascalCase for component names
+- **File organization**: Organize components by feature
+
+## Component Lifecycle
+- **OnInitialized**: Use for initialization logic
+- **OnParametersSet**: Use when parameters change
+- **OnAfterRender**: Use for JavaScript interop after render
+- **IDisposable**: Implement for cleanup (event handlers, timers)
+
+## Parameters & Data Binding
+- **[Parameter]**: Use for component parameters
+- **Two-way binding**: Use @bind for two-way binding
+- **EventCallback**: Use EventCallback<T> for component events
+- **CascadingParameter**: Use for passing data down component tree
+
+## State Management
+- **Component state**: Keep state local when possible
+- **Cascading values**: Use CascadingValue for shared state
+- **State containers**: Create state container services for global state
+- **Fluxor**: Consider Fluxor for complex state management
+
+## Blazor Server vs WebAssembly
+- **Server**: Real-time updates, smaller download, requires connection
+- **WebAssembly**: Offline capable, larger download, runs in browser
+- **Hosting model**: Choose based on requirements
+- **Hybrid**: Consider Blazor Hybrid for desktop/mobile
+
+## JavaScript Interop
+- **IJSRuntime**: Use for calling JavaScript from C#
+- **[JSInvokable]**: Use for calling C# from JavaScript
+- **Minimize interop**: Keep JS interop minimal for performance
+- **Module isolation**: Use JS modules for better organization
+
+## Forms & Validation
+- **EditForm**: Use EditForm for forms
+- **Data Annotations**: Use for validation rules
+- **ValidationSummary**: Display validation errors
+- **Custom validators**: Create custom validation attributes
+
+## Routing
+- **@page directive**: Use for routable components
+- **NavigationManager**: Use for programmatic navigation
+- **Route parameters**: Use for dynamic routes
+- **Query strings**: Access via NavigationManager
+
+## Performance
+- **Virtualization**: Use Virtualize component for large lists
+- **Lazy loading**: Lazy load assemblies in WebAssembly
+- **Prerendering**: Enable prerendering for faster initial load
+- **Streaming rendering**: Use streaming rendering (Blazor Server)
+
+## HTTP & APIs
+- **HttpClient**: Inject HttpClient for API calls
+- **Base address**: Configure base address in Program.cs
+- **Authentication**: Use AuthenticationStateProvider
+- **Error handling**: Handle HTTP errors gracefully
+
+## Authentication & Authorization
+- **AuthenticationStateProvider**: Use for authentication state
+- **AuthorizeView**: Use for conditional rendering based on auth
+- **[Authorize]**: Use attribute for page-level authorization
+- **Policies**: Define authorization policies
+
+## Dependency Injection
+- **Service registration**: Register services in Program.cs
+- **Scoped services**: Use scoped lifetime for Blazor Server
+- **Singleton services**: Use for shared state
+- **@inject directive**: Inject services in components
+
+## CSS & Styling
+- **Scoped CSS**: Use component-scoped CSS (.razor.css)
+- **CSS isolation**: Leverage CSS isolation for component styles
+- **Tailwind/Bootstrap**: Use CSS frameworks as needed
+- **Dynamic classes**: Use conditional classes for state
+
+## Testing
+- **bUnit**: Use bUnit for component testing
+- **Unit tests**: Test component logic
+- **Integration tests**: Test component interactions
+- **Mock services**: Mock dependencies in tests
+
+## Don't
+- Don't use async void in components
+- Don't forget to dispose of event handlers
+- Don't call StateHasChanged unnecessarily
+- Don't use JavaScript interop excessively
+- Don't ignore component lifecycle methods
