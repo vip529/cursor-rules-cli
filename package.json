@@ -1,6 +1,6 @@
 {
   "name": "@vipinx/cursor-rules",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "One-shot Cursor rules generator for your tech stack",
   "type": "module",
   "author": {
@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vipin/cursor-rules-cli.git"
+    "url": "git+https://github.com/vipin/cursor-rules-cli.git"
   },
   "keywords": [
     "cursor",

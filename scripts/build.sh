@@ -15,5 +15,8 @@ for dir in src/templates/*/; do
   cp "$dir"*.ignore "dist/templates/$name/" 2>/dev/null || true
 done
 
+echo "Making CLI executable..."
+chmod +x dist/cli.js
+
 echo "Build complete!"
 
