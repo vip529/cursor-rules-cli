@@ -4,7 +4,7 @@ import { addCommand } from '~/commands/add.js';
 import { error } from '~/ui/prompts.js';
 
 function displayHelp(): void {
-  console.log('Usage: npx @vipin/cursor-rules add [--select]');
+  console.log('Usage: npx @vipinx/cursor-rules add [--select]');
   console.log();
   console.log('Generates Cursor rules files for your project.');
   console.log();

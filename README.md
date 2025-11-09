@@ -1,11 +1,11 @@
-# @vipin/cursor-rules
+# @vipinx/cursor-rules
 
 One-shot generator that creates Cursor rules tailored to your project stack.
 
 ## 30-second usage
 
 ```bash
-npx @vipin/cursor-rules add
+npx @vipinx/cursor-rules add
 ```
 
 - Detects your stack automatically
