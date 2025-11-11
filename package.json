@@ -1,16 +1,16 @@
 {
   "name": "@vipinx/cursor-rules",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "One-shot Cursor rules generator for your tech stack",
   "type": "module",
   "author": {
     "name": "Vipin Yadav",
-    "url": "https://github.com/vipin"
+    "url": "https://github.com/vip529"
   },
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vipin/cursor-rules-cli.git"
+    "url": "git+https://github.com/vip529/cursor-rules-cli"
   },
   "keywords": [
     "cursor",
